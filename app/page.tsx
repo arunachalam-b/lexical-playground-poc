@@ -6,12 +6,14 @@
  *
  */
 "use client"
-import {AutoFocusPlugin} from '@lexical/react/LexicalAutoFocusPlugin';
-import {LexicalComposer} from '@lexical/react/LexicalComposer';
-import {ContentEditable} from '@lexical/react/LexicalContentEditable';
-import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
-import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
-import {PlainTextPlugin} from '@lexical/react/LexicalPlainTextPlugin';
+import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
+import { LexicalComposer } from '@lexical/react/LexicalComposer';
+import { ContentEditable } from '@lexical/react/LexicalContentEditable';
+import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
+import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
+import { PlainTextPlugin } from '@lexical/react/LexicalPlainTextPlugin';
+// import { LexicalRichTextPlugin } from '@lexical/rich-text/LexicalRichTextPlugin';
+// import { LexicalOnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 
 import ExampleTheme from './ExampleTheme';
 import TreeViewPlugin from './plugins/TreeViewPlugin';
@@ -36,13 +38,17 @@ export default function App() {
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
         <div className="editor-inner">
-          <PlainTextPlugin
+          {/* <PlainTextPlugin
             contentEditable={<ContentEditable className="editor-input" />}
             placeholder={<Placeholder />}
             ErrorBoundary={LexicalErrorBoundary}
           />
           <HistoryPlugin />
-          <AutoFocusPlugin />
+          <AutoFocusPlugin /> */}
+          <LexicalRichTextPlugin />
+          <LexicalOnChangePlugin onChange={(editorState) => {
+            editorStateRef.current = editorState;
+          }} />
           <TreeViewPlugin />
         </div>
       </div>
